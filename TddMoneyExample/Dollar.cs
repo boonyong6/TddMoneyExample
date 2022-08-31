@@ -1,23 +1,15 @@
 ﻿namespace TddMoneyExample
 {
-    class Dollar
+    class Dollar : Money
     {
-        private int _amount;
-
         public Dollar(int amount)
         {
-            _amount = amount;
+            Amount = amount;
         }
 
         public Dollar Times(int multiplier)
         {
-            return new Dollar(_amount * multiplier);
-        }
-
-        public override bool Equals(object? obj)
-        {
-            Dollar dollar = (Dollar)obj!;
-            return _amount == dollar._amount;
+            return new Dollar(Amount * multiplier);
         }
     }
 }
