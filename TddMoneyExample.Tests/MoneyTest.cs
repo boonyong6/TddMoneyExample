@@ -3,6 +3,11 @@ namespace TddMoneyExample.Tests
     public class MoneyTest
     {
         [Fact]
+        /*
+         * This test depends on / couples to the Dollar.Equals function.
+         * If the Dollar.Equals function fails, this test will fail as well.
+         * And this is the risk we are taking to decouple the tests and the code.
+        */
         public void TestMultiplication()
         {
             Dollar five = new Dollar(5);
