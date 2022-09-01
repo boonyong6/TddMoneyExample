@@ -26,8 +26,8 @@ namespace TddMoneyExample.Tests
         [Fact]
         public void TestCurrency()
         {
-            Assert.Equal("USD", Money.Dollar(1).GetCurrency());
-            Assert.Equal("CHF", Money.Franc(1).GetCurrency());
+            Assert.Equal("USD", Money.Dollar(1).Currency);
+            Assert.Equal("CHF", Money.Franc(1).Currency);
         }
     }
 }

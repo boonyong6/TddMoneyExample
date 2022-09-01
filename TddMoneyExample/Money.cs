@@ -2,12 +2,12 @@
 {
     class Money
     {
-        protected int Amount;
-        protected string Currency;
+        private int _amount;
+        public string Currency { get; }
 
         public Money(int amount, string currency)
         {
-            Amount = amount;
+            _amount = amount;
             Currency = currency;
         }
 
@@ -21,26 +21,21 @@
             return new Money(amount, "CHF");
         }
 
-        public virtual Money Times(int multiplier)
+        public Money Times(int multiplier)
         {
-            return new Money(Amount * multiplier, Currency);
-        }
-
-        public virtual string GetCurrency()
-        {
-            return Currency;
+            return new Money(_amount * multiplier, Currency);
         }
 
         public override bool Equals(object? obj)
         {
             Money money = (Money)obj!;
-            return Amount == money.Amount
+            return _amount == money._amount
                 && Currency.Equals(money.Currency);
         }
 
         public override string ToString()
         {
-            return Amount + " " + Currency;
+            return _amount + " " + Currency;
         }
     }
 }
