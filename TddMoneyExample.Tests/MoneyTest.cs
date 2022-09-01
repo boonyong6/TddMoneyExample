@@ -2,12 +2,12 @@ namespace TddMoneyExample.Tests
 {
     public class MoneyTest
     {
-        [Fact]
         /*
          * This test depends on / couples to the Dollar.Equals function.
          * If the Dollar.Equals function fails, this test will fail as well.
          * And this is the risk we are taking to decouple the tests and the code.
         */
+        [Fact]
         public void TestMultiplication()
         {
             Dollar five = new Dollar(5);
@@ -30,6 +30,7 @@ namespace TddMoneyExample.Tests
             Assert.False(new Dollar(5).Equals(new Dollar(6)));
             Assert.True(new Franc(5).Equals(new Franc(5)));
             Assert.False(new Franc(5).Equals(new Franc(6)));
+            Assert.False(new Dollar(5).Equals(new Franc(5)));
         }
     }
 }
