@@ -1,6 +1,6 @@
 ﻿namespace TddMoneyExample
 {
-    abstract class Money
+    class Money
     {
         protected int Amount;
         protected string Currency;
@@ -21,7 +21,10 @@
             return new Franc(amount, "CHF");
         }
 
-        public abstract Money Times(int multiplier);
+        public virtual Money Times(int multiplier)
+        {
+            return new Money(Amount * multiplier, Currency);
+        }
 
         public virtual string GetCurrency()
         {
@@ -32,7 +35,12 @@
         {
             Money money = (Money)obj!;
             return Amount == money.Amount
-                && GetType().Equals(money.GetType());
+                && Currency.Equals(money.Currency);
+        }
+
+        public override string ToString()
+        {
+            return Amount + " " + Currency;
         }
     }
 }

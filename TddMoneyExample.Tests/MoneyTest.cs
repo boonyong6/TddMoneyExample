@@ -34,6 +34,12 @@ namespace TddMoneyExample.Tests
         }
 
         [Fact]
+        public void TestDifferentClassEquality()
+        {
+            Assert.True(new Money(10, "CHF").Equals(new Franc(10, "CHF")));
+        }
+
+        [Fact]
         public void TestCurrency()
         {
             Assert.Equal("USD", Money.Dollar(1).GetCurrency());
