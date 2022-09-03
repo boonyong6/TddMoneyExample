@@ -29,5 +29,15 @@ namespace TddMoneyExample.Tests
             Assert.Equal("USD", Money.Dollar(1).Currency);
             Assert.Equal("CHF", Money.Franc(1).Currency);
         }
+
+        [Fact]
+        public void TestSimpleAddition()
+        {
+            Money five = Money.Dollar(5);
+            IExpression sum = five.Plus(five);
+            Bank bank = new Bank();
+            Money reduced = bank.Reduce(sum, "USD");
+            Assert.Equal(Money.Dollar(10), reduced);
+        }
     }
 }

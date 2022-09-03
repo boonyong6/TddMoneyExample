@@ -1,6 +1,6 @@
 ﻿namespace TddMoneyExample
 {
-    class Money
+    class Money : IExpression
     {
         private int _amount;
         public string Currency { get; }
@@ -36,6 +36,11 @@
         public override string ToString()
         {
             return _amount + " " + Currency;
+        }
+
+        public IExpression Plus(Money addend)
+        {
+            return new Money(_amount + addend._amount, Currency);
         }
     }
 }
