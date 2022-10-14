@@ -48,5 +48,10 @@
             int rate = bank.GetRate(Currency, to);
             return new Money(Amount / rate, to);
         }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Amount, Currency);
+        }
     }
 }
