@@ -2,12 +2,12 @@
 {
     class Money : IExpression
     {
-        private int _amount;
+        public int Amount { get; }
         public string Currency { get; }
 
         public Money(int amount, string currency)
         {
-            _amount = amount;
+            Amount = amount;
             Currency = currency;
         }
 
@@ -23,24 +23,24 @@
 
         public Money Times(int multiplier)
         {
-            return new Money(_amount * multiplier, Currency);
+            return new Money(Amount * multiplier, Currency);
         }
 
         public override bool Equals(object? obj)
         {
             Money money = (Money)obj!;
-            return _amount == money._amount
+            return Amount == money.Amount
                 && Currency.Equals(money.Currency);
         }
 
         public override string ToString()
         {
-            return _amount + " " + Currency;
+            return Amount + " " + Currency;
         }
 
         public IExpression Plus(Money addend)
         {
-            return new Money(_amount + addend._amount, Currency);
+            return new Sum(this, addend);
         }
     }
 }

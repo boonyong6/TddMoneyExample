@@ -3,7 +3,7 @@ namespace TddMoneyExample.Tests
     public class MoneyTest
     {
         /*
-         * This test depends on / couples to the Dollar.Equals function.
+         * This test depends on / coupled with the Dollar.Equals function.
          * If the Dollar.Equals function fails, this test will fail as well.
          * And this is the risk we are taking to decouple the tests and the code.
         */
@@ -38,6 +38,26 @@ namespace TddMoneyExample.Tests
             Bank bank = new Bank();
             Money reduced = bank.Reduce(sum, "USD");
             Assert.Equal(Money.Dollar(10), reduced);
+        }
+
+        // Short-lived test (Test shouldn't be concerned with the implementation)
+        [Fact]
+        public void TestPlusReturnsSum()
+        {
+            Money five = Money.Dollar(5);
+            IExpression result = five.Plus(five);
+            Sum sum = (Sum)result;
+            Assert.Equal(five, sum.Augend);
+            Assert.Equal(five, sum.Addend);
+        }
+
+        [Fact]
+        public void TestReduceSum()
+        {
+            IExpression sum = new Sum(Money.Dollar(3), Money.Dollar(4));
+            Bank bank = new Bank();
+            Money result = bank.Reduce(sum, "USD");
+            Assert.Equal(Money.Dollar(7), result);
         }
     }
 }
