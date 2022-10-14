@@ -2,10 +2,10 @@
 {
     class Sum : IExpression
     {
-        public Money Augend { get; }
-        public Money Addend { get; }
+        public IExpression Augend { get; }
+        public IExpression Addend { get; }
 
-        public Sum(Money augend, Money addend)
+        public Sum(IExpression augend, IExpression addend)
         {
             Augend = augend;
             Addend = addend;
@@ -13,8 +13,13 @@
 
         public Money Reduce(Bank bank, string to)
         {
-            int amount = Augend.Amount + Addend.Amount;
+            int amount = Augend.Reduce(bank, to).Amount + Addend.Reduce(bank, to).Amount;
             return new Money(amount, to);
+        }
+
+        public IExpression Plus(IExpression addend)
+        {
+            return null;
         }
     }
 }

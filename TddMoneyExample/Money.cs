@@ -21,7 +21,7 @@
             return new Money(amount, "CHF");
         }
 
-        public Money Times(int multiplier)
+        public IExpression Times(int multiplier)
         {
             return new Money(Amount * multiplier, Currency);
         }
@@ -38,7 +38,7 @@
             return Amount + " " + Currency;
         }
 
-        public IExpression Plus(Money addend)
+        public IExpression Plus(IExpression addend)
         {
             return new Sum(this, addend);
         }
