@@ -4,5 +4,6 @@
     // Use reduce to convert multi-currency to a single currency. 
     interface IExpression
     {
+        Money Reduce(string to);
     }
 }

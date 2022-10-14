@@ -42,5 +42,10 @@
         {
             return new Sum(this, addend);
         }
+
+        public Money Reduce(string to)
+        {
+            return this;
+        }
     }
 }
