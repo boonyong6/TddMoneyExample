@@ -5,6 +5,7 @@
     interface IExpression
     {
         IExpression Plus(IExpression addend);
+        IExpression Times(int multiplier);
         Money Reduce(Bank bank, string to);
     }
 }
